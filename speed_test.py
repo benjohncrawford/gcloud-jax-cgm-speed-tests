@@ -11,6 +11,7 @@ import argparse
 import json
 import platform
 import time
+import math
 
 import jax
 import jax.numpy as jnp
@@ -70,10 +71,10 @@ def run_compile_time_test(total_time=360.0, n_repeats=10):
         block_until_ready(predictions)
         run_time = time.perf_counter() - t0
         run_times.append(run_time)
-        print(f"Finished (does not include compile): {compile_time:.2f}s")
+        print(f"Finished (does not include compile): {run_time:.2f}s")
 
-    mean_runtime_with_compile = compile_times.mean()
-    mean_runtime_no_compile = run_times.mean()
+    mean_runtime_with_compile = np.array(compile_times).mean()
+    mean_runtime_no_compile = np.array(run_times).mean()
 
     print(f"Estimate compile time: {mean_runtime_with_compile-mean_runtime_no_compile}")
     return mean_runtime_with_compile-mean_runtime_no_compile
@@ -131,7 +132,7 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         print("RESULTS")
         print("=" * 60)
         print(json.dumps(global_results, indent=2))
-    return results
+    return global_results
 
 
 if __name__ == "__main__":
@@ -139,14 +140,16 @@ if __name__ == "__main__":
     parser.add_argument("--total_time", type=float, default=365.0, help="Simulation length in days")
     parser.add_argument("--save_interval", type=float, default=30.0, help="Save interval in days")
     parser.add_argument("--n_repeats", type=int, default=5, help="Number of timed repeats")
-    parser.add_argument("--compile_test", type=bool, default=False, help="Run the compile time test")
+    parser.add_argument("--compile_test", type=bool, default=False, help="Run the compile time test (Does 10 iterations for total_time/10 days)")
+    parser.add_argument("--run_time_test", type=bool, default=False, help="Run the run time test")
     args = parser.parse_args()
 
-    results = run_speed_test(
-        total_time=args.total_time,
-        save_interval=args.save_interval,
-        n_repeats=args.n_repeats,
-    )
+    if args.run_time_test:
+        results = run_speed_test(
+            total_time=args.total_time,
+            save_interval=args.save_interval,
+            n_repeats=args.n_repeats,
+        )
     if args.compile_test:
-        run_compile_time_test(args.total_time/10, n_repeats=10)
+        run_compile_time_test(math.floor(args.total_time/10), n_repeats=10)
 
