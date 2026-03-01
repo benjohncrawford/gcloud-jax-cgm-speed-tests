@@ -1,0 +1,110 @@
+{
+  "platform": "gpu",
+  "device_kind": "Tesla P100-PCIE-16GB",
+  "num_devices": 1,
+  "python_version": "3.11.14",
+  "jax_version": "0.9.0.1",
+  "hostname": "jcm-bench-gpu-p100",
+  "total_time_days": 365.0,
+  "save_interval_days": 365.0,
+  "n_repeats": 1,
+  "21": {
+    "resolution": 21,
+    "runtime_with_compilation_s": 123.106,
+    "mean_s": 62.912,
+    "std_s": 0.0,
+    "min_s": 62.912,
+    "max_s": 62.912,
+    "all_times_s": [
+      62.912
+    ]
+  },
+  "42": {
+    "resolution": 42,
+    "runtime_with_compilation_s": 102.607,
+    "mean_s": 62.855,
+    "std_s": 0.0,
+    "min_s": 62.855,
+    "max_s": 62.855,
+    "all_times_s": [
+      62.855
+    ]
+  },
+  "62": {
+    "resolution": 62,
+    "runtime_with_compilation_s": 102.999,
+    "mean_s": 62.657,
+    "std_s": 0.0,
+    "min_s": 62.657,
+    "max_s": 62.657,
+    "all_times_s": [
+      62.657
+    ]
+  },
+  "63": {
+    "resolution": 63,
+    "runtime_with_compilation_s": 103.001,
+    "mean_s": 62.686,
+    "std_s": 0.0,
+    "min_s": 62.686,
+    "max_s": 62.686,
+    "all_times_s": [
+      62.686
+    ]
+  },
+  "85": {
+    "resolution": 85,
+    "runtime_with_compilation_s": 101.585,
+    "mean_s": 62.662,
+    "std_s": 0.0,
+    "min_s": 62.662,
+    "max_s": 62.662,
+    "all_times_s": [
+      62.662
+    ]
+  },
+  "106": {
+    "resolution": 106,
+    "runtime_with_compilation_s": 102.841,
+    "mean_s": 62.372,
+    "std_s": 0.0,
+    "min_s": 62.372,
+    "max_s": 62.372,
+    "all_times_s": [
+      62.372
+    ]
+  },
+  "159": {
+    "resolution": 159,
+    "runtime_with_compilation_s": 102.52,
+    "mean_s": 62.568,
+    "std_s": 0.0,
+    "min_s": 62.568,
+    "max_s": 62.568,
+    "all_times_s": [
+      62.568
+    ]
+  },
+  "255": {
+    "resolution": 255,
+    "runtime_with_compilation_s": 102.82,
+    "mean_s": 62.153,
+    "std_s": 0.0,
+    "min_s": 62.153,
+    "max_s": 62.153,
+    "all_times_s": [
+      62.153
+    ]
+  },
+  "382": {
+    "resolution": 382,
+    "runtime_with_compilation_s": 102.992,
+    "mean_s": 62.344,
+    "std_s": 0.0,
+    "min_s": 62.344,
+    "max_s": 62.344,
+    "all_times_s": [
+      62.344
+    ]
+  }
+}

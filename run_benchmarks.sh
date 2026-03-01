@@ -55,16 +55,16 @@ echo "--- Creating VMs ---"
 #   --preemptible &
 
 # # GPU P100 (Deep Learning VM with CUDA 12.8 + NVIDIA 570 drivers pre-installed)
-# echo "Creating P100 GPU VM..."
-# gcloud compute instances create "$VM_GPU" \
-#   --zone="$ZONE_GPU" \
-#   --machine-type=n1-standard-8 \
-#   --accelerator=type=nvidia-tesla-p100,count=1 \
-#   --maintenance-policy=TERMINATE \
-#   --image-family=common-cu128-ubuntu-2204-nvidia-570 \
-#   --image-project=deeplearning-platform-release \
-#   --boot-disk-size=100GB \
-#   --preemptible &
+echo "Creating P100 GPU VM..."
+gcloud compute instances create "$VM_GPU" \
+  --zone="$ZONE_GPU" \
+  --machine-type=n1-standard-8 \
+  --accelerator=type=nvidia-tesla-p100,count=1 \
+  --maintenance-policy=TERMINATE \
+  --image-family=common-cu128-ubuntu-2204-nvidia-570 \
+  --image-project=deeplearning-platform-release \
+  --boot-disk-size=100GB \
+  --preemptible &
 
 # CPU c4-standard-32
 echo "Creating c4-standard-32 CPU VM..."
@@ -212,7 +212,7 @@ run_benchmark() {
 
 # Run all three in parallel
 # run_benchmark "$VM_TPU" "$ZONE_TPU" "gcloud compute tpus tpu-vm ssh" "$SETUP_TPU" &
-# run_benchmark "$VM_GPU" "$ZONE_GPU" "gcloud compute ssh" "$SETUP_GPU" &
+run_benchmark "$VM_GPU" "$ZONE_GPU" "gcloud compute ssh" "$SETUP_GPU" &
 run_benchmark "$VM_CPU" "$ZONE_CPU" "gcloud compute ssh" "$SETUP_CPU" &
 wait
 
