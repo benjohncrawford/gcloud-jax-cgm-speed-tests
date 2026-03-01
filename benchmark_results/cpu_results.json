@@ -1,0 +1,110 @@
+{
+  "platform": "cpu",
+  "device_kind": "cpu",
+  "num_devices": 1,
+  "python_version": "3.11.2",
+  "jax_version": "0.9.0.1",
+  "hostname": "jcm-bench-cpu-c4",
+  "total_time_days": 365.0,
+  "save_interval_days": 365.0,
+  "n_repeats": 1,
+  "21": {
+    "resolution": 21,
+    "runtime_with_compilation_s": 151.092,
+    "mean_s": 143.862,
+    "std_s": 0.0,
+    "min_s": 143.862,
+    "max_s": 143.862,
+    "all_times_s": [
+      143.862
+    ]
+  },
+  "42": {
+    "resolution": 42,
+    "runtime_with_compilation_s": 149.387,
+    "mean_s": 143.525,
+    "std_s": 0.0,
+    "min_s": 143.525,
+    "max_s": 143.525,
+    "all_times_s": [
+      143.525
+    ]
+  },
+  "62": {
+    "resolution": 62,
+    "runtime_with_compilation_s": 148.588,
+    "mean_s": 142.487,
+    "std_s": 0.0,
+    "min_s": 142.487,
+    "max_s": 142.487,
+    "all_times_s": [
+      142.487
+    ]
+  },
+  "63": {
+    "resolution": 63,
+    "runtime_with_compilation_s": 146.936,
+    "mean_s": 141.051,
+    "std_s": 0.0,
+    "min_s": 141.051,
+    "max_s": 141.051,
+    "all_times_s": [
+      141.051
+    ]
+  },
+  "85": {
+    "resolution": 85,
+    "runtime_with_compilation_s": 149.11,
+    "mean_s": 141.6,
+    "std_s": 0.0,
+    "min_s": 141.6,
+    "max_s": 141.6,
+    "all_times_s": [
+      141.6
+    ]
+  },
+  "106": {
+    "resolution": 106,
+    "runtime_with_compilation_s": 146.395,
+    "mean_s": 141.705,
+    "std_s": 0.0,
+    "min_s": 141.705,
+    "max_s": 141.705,
+    "all_times_s": [
+      141.705
+    ]
+  },
+  "159": {
+    "resolution": 159,
+    "runtime_with_compilation_s": 148.297,
+    "mean_s": 142.072,
+    "std_s": 0.0,
+    "min_s": 142.072,
+    "max_s": 142.072,
+    "all_times_s": [
+      142.072
+    ]
+  },
+  "255": {
+    "resolution": 255,
+    "runtime_with_compilation_s": 147.477,
+    "mean_s": 143.402,
+    "std_s": 0.0,
+    "min_s": 143.402,
+    "max_s": 143.402,
+    "all_times_s": [
+      143.402
+    ]
+  },
+  "382": {
+    "resolution": 382,
+    "runtime_with_compilation_s": 146.983,
+    "mean_s": 142.337,
+    "std_s": 0.0,
+    "min_s": 142.337,
+    "max_s": 142.337,
+    "all_times_s": [
+      142.337
+    ]
+  }
+}

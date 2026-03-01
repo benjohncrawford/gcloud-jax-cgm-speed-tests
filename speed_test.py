@@ -42,6 +42,41 @@ def get_device_info():
         "hostname": platform.node(),
     }
 
+def run_compile_time_test(total_time=360.0, n_repeats=10):
+    compile_times = []
+    run_times = []
+    for i in range(n_repeats):
+        jax.clear_caches()
+        resolution = 21
+        # --- Model setup ---
+        print(f"Creating model (T{resolution})...")
+        coords = get_speedy_coords(spectral_truncation=resolution)
+        terrain = TerrainData.aquaplanet(coords=coords)
+        model = Model(coords=coords, terrain=terrain)
+        print("Model created.")
+
+        print(f"Running model for {total_time} days...")
+        t0 = time.perf_counter()
+        predictions = model.run(save_interval=total_time, total_time=total_time)
+        block_until_ready(predictions)
+        compile_time = time.perf_counter() - t0
+        compile_times.append(compile_time)
+        print(f"Finished (includes compile): {compile_time:.2f}s")
+
+    for i in range(n_repeats):
+        print(f"Running model for {total_time} days...")
+        t0 = time.perf_counter()
+        predictions = model.run(save_interval=total_time, total_time=total_time)
+        block_until_ready(predictions)
+        run_time = time.perf_counter() - t0
+        run_times.append(run_time)
+        print(f"Finished (does not include compile): {compile_time:.2f}s")
+
+    mean_runtime_with_compile = compile_times.mean()
+    mean_runtime_no_compile = run_times.mean()
+
+    print(f"Estimate compile time: {mean_runtime_with_compile-mean_runtime_no_compile}")
+    return mean_runtime_with_compile-mean_runtime_no_compile
 
 def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
     """Run speed test and return results dict."""
@@ -49,11 +84,12 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
     print(f"Device info: {json.dumps(device_info, indent=2)}")
     resolution_list = [21, 42, 62, 63, 85, 106, 159, 255, 382]
     global_results = {**device_info,
-               "total_time_days": total_time,
-               "save_interval_days": save_interval,
-               "n_repeats": n_repeats
-              }
+                      "total_time_days": total_time,
+                      "save_interval_days": save_interval,
+                      "n_repeats": n_repeats
+                     }
     for resolution in resolution_list:
+        jax.clear_caches()
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
         coords = get_speedy_coords(spectral_truncation=resolution)
@@ -83,7 +119,7 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         times = np.array(times)
         global_results[resolution] = {
             "resolution": resolution,
-            "compile_time_s": round(compile_time, 3),
+            "runtime_with_compilation_s": round(compile_time, 3),
             "mean_s": round(float(times.mean()), 3),
             "std_s": round(float(times.std()), 3),
             "min_s": round(float(times.min()), 3),
@@ -94,7 +130,7 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         print("\n" + "=" * 60)
         print("RESULTS")
         print("=" * 60)
-        print(json.dumps(results, indent=2))
+        print(json.dumps(global_results, indent=2))
     return results
 
 
@@ -103,6 +139,7 @@ if __name__ == "__main__":
     parser.add_argument("--total_time", type=float, default=365.0, help="Simulation length in days")
     parser.add_argument("--save_interval", type=float, default=30.0, help="Save interval in days")
     parser.add_argument("--n_repeats", type=int, default=5, help="Number of timed repeats")
+    parser.add_argument("--compile_test", type=bool, default=False, help="Run the compile time test")
     args = parser.parse_args()
 
     results = run_speed_test(
@@ -110,3 +147,6 @@ if __name__ == "__main__":
         save_interval=args.save_interval,
         n_repeats=args.n_repeats,
     )
+    if args.compile_test:
+        run_compile_time_test(args.total_time/10, n_repeats=10)
+
