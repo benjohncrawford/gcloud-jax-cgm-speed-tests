@@ -17,7 +17,8 @@ import jax.numpy as jnp
 import numpy as np
 
 from jcm.model import Model
-
+from jcm.terrain import TerrainData
+from jcm.physics.speedy.speedy_coords import get_speedy_coords
 
 def block_until_ready(predictions):
     """Block until all arrays in a Predictions pytree are materialized."""
@@ -54,8 +55,10 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
               }
     for resolution in resolution_list:
         # --- Model setup ---
-        print(f"Creating model (T{resolution}, 8 layers, dt=30min)...")
-        model = Model(horizontal_resolution=resolution)
+        print(f"Creating model (T{resolution})...")
+        coords = get_speedy_coords(spectral_truncation=resolution)
+        terrain = TerrainData.aquaplanet(coords=coords)
+        model = Model(coords=coords, terrain=terrain)
         print("Model created.")
 
         # --- Warmup / compile ---
