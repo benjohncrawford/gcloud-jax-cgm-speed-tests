@@ -46,55 +46,58 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
     """Run speed test and return results dict."""
     device_info = get_device_info()
     print(f"Device info: {json.dumps(device_info, indent=2)}")
+    resolution_list = [21, 42, 62, 63, 85, 106, 159, 255, 382]
+    global_results = {**device_info,
+               "total_time_days": total_time,
+               "save_interval_days": save_interval,
+               "n_repeats": n_repeats
+              }
+    for resolution in resolution_list:
+        # --- Model setup ---
+        print(f"Creating model (T{resolution}, 8 layers, dt=30min)...")
+        model = Model(horizontal_resolution=resolution)
+        print("Model created.")
 
-    # --- Model setup ---
-    print("Creating model (T31, 8 layers, dt=30min)...")
-    model = Model(time_step=30.0)
-    print("Model created.")
-
-    # --- Warmup / compile ---
-    print(f"Warmup run ({total_time} days, save every {save_interval} days)...")
-    t0 = time.perf_counter()
-    predictions = model.run(save_interval=save_interval, total_time=total_time)
-    block_until_ready(predictions)
-    compile_time = time.perf_counter() - t0
-    print(f"Warmup (includes compile): {compile_time:.2f}s")
-
-    # --- Timed runs ---
-    print(f"Running {n_repeats} timed iterations...")
-    times = []
-    for i in range(n_repeats):
+        # --- Warmup / compile ---
+        print(f"Warmup run ({total_time} days, save every {save_interval} days)...")
         t0 = time.perf_counter()
         predictions = model.run(save_interval=save_interval, total_time=total_time)
         block_until_ready(predictions)
-        elapsed = time.perf_counter() - t0
-        times.append(elapsed)
-        print(f"  Run {i + 1}/{n_repeats}: {elapsed:.3f}s")
+        compile_time = time.perf_counter() - t0
+        print(f"Warmup (includes compile): {compile_time:.2f}s")
 
-    times = np.array(times)
-    results = {
-        **device_info,
-        "total_time_days": total_time,
-        "save_interval_days": save_interval,
-        "n_repeats": n_repeats,
-        "compile_time_s": round(compile_time, 3),
-        "mean_s": round(float(times.mean()), 3),
-        "std_s": round(float(times.std()), 3),
-        "min_s": round(float(times.min()), 3),
-        "max_s": round(float(times.max()), 3),
-        "all_times_s": [round(float(t), 3) for t in times],
-    }
+        # --- Timed runs ---
+        print(f"Running {n_repeats} timed iterations...")
+        times = []
+        for i in range(n_repeats):
+            t0 = time.perf_counter()
+            predictions = model.run(save_interval=save_interval, total_time=total_time)
+            block_until_ready(predictions)
+            elapsed = time.perf_counter() - t0
+            times.append(elapsed)
+            print(f"  Run {i + 1}/{n_repeats}: {elapsed:.3f}s")
 
-    print("\n" + "=" * 60)
-    print("RESULTS")
-    print("=" * 60)
-    print(json.dumps(results, indent=2))
+        times = np.array(times)
+        global_results[resolution] = {
+            "resolution": resolution,
+            "compile_time_s": round(compile_time, 3),
+            "mean_s": round(float(times.mean()), 3),
+            "std_s": round(float(times.std()), 3),
+            "min_s": round(float(times.min()), 3),
+            "max_s": round(float(times.max()), 3),
+            "all_times_s": [round(float(t), 3) for t in times],
+        }
+
+        print("\n" + "=" * 60)
+        print("RESULTS")
+        print("=" * 60)
+        print(json.dumps(results, indent=2))
     return results
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="jax-gcm speed test")
-    parser.add_argument("--total_time", type=float, default=360.0, help="Simulation length in days")
+    parser.add_argument("--total_time", type=float, default=365.0, help="Simulation length in days")
     parser.add_argument("--save_interval", type=float, default=30.0, help="Save interval in days")
     parser.add_argument("--n_repeats", type=int, default=5, help="Number of timed repeats")
     args = parser.parse_args()
