@@ -1,10 +1,4 @@
 {
-  "platform": "cpu",
-  "device_kind": "cpu",
-  "num_devices": 1,
-  "python_version": "3.11.2",
-  "jax_version": "0.9.0.1",
-  "hostname": "jcm-bench-cpu-c4",
   "10_days_resolution_21_cpu": 6.5923068664000315,
   "20_days_resolution_21_cpu": 6.526986943200063,
   "10_days_resolution_42_cpu": 6.439937573999851,
