@@ -18,22 +18,8 @@ import jax.numpy as jnp
 import numpy as np
 
 from jcm.model import Model
-from jcm.terrain import TerrainData
-from jcm.physics.speedy.speedy_coords import get_speedy_coords
 from jcm.utils import VALID_TRUNCATIONS
-
-NODAL_SHAPE_FOR_TRUNCATION = {
-    21: (64, 32),
-    31: (96, 48),
-    42: (128, 64),
-    85: (256, 128),
-    106: (320, 160),
-    119: (360, 180),
-    170: (512, 256),
-    213: (640, 320),
-    340: (1024, 512),
-    425: (1280, 640),
-}
+from jcm.forcing import default_forcing
 
 def block_until_ready(predictions):
     """Block until all arrays in a Predictions pytree are materialized."""
@@ -65,14 +51,15 @@ def run_compile_time_test(total_time=360.0, n_repeats=10):
         resolution = 21
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
-        coords = get_speedy_coords(spectral_truncation=resolution)
-        terrain = TerrainData.aquaplanet(coords=coords)
-        model = Model(coords=coords, terrain=terrain)
+        model = Model(horizontal_resolution=resolution)
         print("Model created.")
 
         print(f"Running model for {total_time} days...")
         t0 = time.perf_counter()
-        predictions = model.run(save_interval=total_time, total_time=total_time)
+        _, predictions = model.run_from_state(initial_state=model._prepare_initial_modal_state(),
+                                        forcing=default_forcing(model.coords.horizontal), 
+                                        save_interval=total_time, 
+                                        total_time=total_time)
         block_until_ready(predictions)
         compile_time = time.perf_counter() - t0
         compile_times.append(compile_time)
@@ -81,7 +68,10 @@ def run_compile_time_test(total_time=360.0, n_repeats=10):
     for i in range(n_repeats):
         print(f"Running model for {total_time} days...")
         t0 = time.perf_counter()
-        predictions = model.run(save_interval=total_time, total_time=total_time)
+        _, predictions = model.run_from_state(initial_state=model._prepare_initial_modal_state(),
+                                forcing=default_forcing(model.coords.horizontal), 
+                                save_interval=total_time, 
+                                total_time=total_time)
         block_until_ready(predictions)
         run_time = time.perf_counter() - t0
         run_times.append(run_time)
@@ -106,15 +96,16 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         jax.clear_caches()
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
-        coords = get_speedy_coords(nodal_shape=NODAL_SHAPE_FOR_TRUNCATION[resolution])
-        terrain = TerrainData.aquaplanet(coords=coords)
-        model = Model(coords=coords, terrain=terrain)
+        model = Model(horizontal_resolution=resolution)
         print("Model created.")
 
         # --- Warmup / compile ---
         print(f"Warmup run ({total_time} days, save every {save_interval} days)...")
         t0 = time.perf_counter()
-        predictions = model.run(save_interval=save_interval, total_time=total_time)
+        _, predictions = model.run_from_state(initial_state=model._prepare_initial_modal_state(),
+                                              forcing=default_forcing(model.coords.horizontal), 
+                                              save_interval=save_interval, 
+                                              total_time=total_time)
         block_until_ready(predictions)
         compile_time = time.perf_counter() - t0
         print(f"Warmup (includes compile): {compile_time:.2f}s")
@@ -124,7 +115,10 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         times = []
         for i in range(n_repeats):
             t0 = time.perf_counter()
-            predictions = model.run(save_interval=save_interval, total_time=total_time)
+            _, predictions = model.run_from_state(initial_state=model._prepare_initial_modal_state(),
+                                        forcing=default_forcing(model.coords.horizontal), 
+                                        save_interval=save_interval, 
+                                        total_time=total_time)
             block_until_ready(predictions)
             elapsed = time.perf_counter() - t0
             times.append(elapsed)
