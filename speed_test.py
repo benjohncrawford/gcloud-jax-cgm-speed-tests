@@ -20,6 +20,21 @@ import numpy as np
 from jcm.model import Model
 from jcm.utils import VALID_TRUNCATIONS
 from jcm.forcing import default_forcing
+from jcm.terrain import TerrainData
+from jcm.physics.speedy.speedy_coords import get_speedy_coords
+
+NODAL_SHAPE_FOR_TRUNCATION = {
+    21: (64, 32),
+    31: (96, 48),
+    42: (128, 64),
+    85: (256, 128),
+    106: (320, 160),
+    119: (360, 180),
+    170: (512, 256),
+    213: (640, 320),
+    340: (1024, 512),
+    425: (1280, 640),
+}
 
 def block_until_ready(predictions):
     """Block until all arrays in a Predictions pytree are materialized."""
@@ -51,7 +66,9 @@ def run_compile_time_test(total_time=360.0, n_repeats=10):
         resolution = 21
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
-        model = Model(horizontal_resolution=resolution)
+        coords = get_speedy_coords(spectral_truncation=resolution)
+        terrain = TerrainData.aquaplanet(coords=coords)
+        model = Model(coords=coords, terrain=terrain)
         print("Model created.")
 
         print(f"Running model for {total_time} days...")
@@ -96,7 +113,9 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         jax.clear_caches()
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
-        model = Model(horizontal_resolution=resolution)
+        coords = get_speedy_coords(nodal_shape=NODAL_SHAPE_FOR_TRUNCATION[resolution])
+        terrain = TerrainData.aquaplanet(coords=coords)
+        model = Model(coords=coords, terrain=terrain)
         print("Model created.")
 
         # --- Warmup / compile ---
