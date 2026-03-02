@@ -108,6 +108,7 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
                                               total_time=total_time)
         block_until_ready(predictions)
         compile_time = time.perf_counter() - t0
+        print(f"Output Size: {predictions.dynamics.u_wind.size}")
         print(f"Warmup (includes compile): {compile_time:.2f}s")
 
         # --- Timed runs ---
