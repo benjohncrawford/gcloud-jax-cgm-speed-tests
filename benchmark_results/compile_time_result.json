@@ -10,5 +10,8 @@
   "10_days_resolution_42_cpu": 6.439937573999851,
   "10_days_resolution_21_gpu": 41.989502357600074,
   "20_days_resolution_21_gpu": 42.079336312300164,
-  "10_days_resolution_42_gpu": 42.28216366419974
+  "10_days_resolution_42_gpu": 42.28216366419974,
+  "10_days_resolution_21_tpu": 12.092119235000018,
+  "20_days_resolution_21_tpu": 12.052944359599952,
+  "10_days_resolution_42_tpu": 12.013349207199962
 }
