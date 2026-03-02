@@ -20,7 +20,7 @@ import numpy as np
 from jcm.model import Model
 from jcm.terrain import TerrainData
 from jcm.physics.speedy.speedy_coords import get_speedy_coords
-
+from jcm.utils import VALID_TRUNCATIONS
 
 NODAL_SHAPE_FOR_TRUNCATION = {
     21: (64, 32),
@@ -97,13 +97,12 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
     """Run speed test and return results dict."""
     device_info = get_device_info()
     print(f"Device info: {json.dumps(device_info, indent=2)}")
-    resolution_list = [21, 42, 62, 63, 85, 106, 159, 255, 382]
     global_results = {**device_info,
                       "total_time_days": total_time,
                       "save_interval_days": save_interval,
                       "n_repeats": n_repeats
                      }
-    for resolution in resolution_list:
+    for resolution in VALID_TRUNCATIONS:
         jax.clear_caches()
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
