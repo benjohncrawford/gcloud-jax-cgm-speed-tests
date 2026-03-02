@@ -114,6 +114,7 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
             predictions = model.run(save_interval=save_interval, total_time=total_time)
             block_until_ready(predictions)
             elapsed = time.perf_counter() - t0
+            print(predictions)
             times.append(elapsed)
             print(f"  Run {i + 1}/{n_repeats}: {elapsed:.3f}s")
 
