@@ -20,7 +20,7 @@ import numpy as np
 from jcm.model import Model
 from jcm.utils import VALID_TRUNCATIONS
 from jcm.forcing import default_forcing
-from jcm.physics.speedy.speedy_coords import get_speedy_coords
+from jcm.geometry import Geometry
 
 NODAL_SHAPE_FOR_TRUNCATION = {
     21: (64, 32),
@@ -65,8 +65,8 @@ def run_compile_time_test(total_time=360.0, n_repeats=10):
         resolution = 21
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
-        coords = get_speedy_coords(spectral_truncation=resolution)
-        model = Model(coords=coords)
+        geometry = Geometry.from_spectral_truncation(resolution)
+        model = Model(geometry=geometry)
         print("Model created.")
 
         print(f"Running model for {total_time} days...")
@@ -111,8 +111,8 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         jax.clear_caches()
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
-        coords = get_speedy_coords(nodal_shape=NODAL_SHAPE_FOR_TRUNCATION[resolution])
-        model = Model(coords=coords)
+        geometry = Geometry.from_spectral_truncation(resolution)
+        model = Model(geometry=geometry)
         print("Model created.")
 
         # --- Warmup / compile ---
