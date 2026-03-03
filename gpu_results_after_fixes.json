@@ -1,0 +1,88 @@
+{
+    "platform": "gpu",
+    "device_kind": "Tesla P100-PCIE-16GB",
+    "num_devices": 1,
+    "python_version": "3.11.14",
+    "jax_version": "0.9.0.1",
+    "hostname": "jcm-bench-gpu-p100",
+    "total_time_days": 365.0,
+    "save_interval_days": 365.0,
+    "n_repeats": 1,
+    "21": {
+        "resolution": 21,
+        "runtime_with_compilation_s": 105.33,
+        "mean_s": 47.849,
+        "std_s": 0.0,
+        "min_s": 47.849,
+        "max_s": 47.849,
+        "all_times_s": [
+            47.849
+        ]
+    },
+    "31": {
+        "resolution": 31,
+        "runtime_with_compilation_s": 115.491,
+        "mean_s": 53.33,
+        "std_s": 0.0,
+        "min_s": 53.33,
+        "max_s": 53.33,
+        "all_times_s": [
+            53.33
+        ]
+    },
+    "42": {
+        "resolution": 42,
+        "runtime_with_compilation_s": 119.014,
+        "mean_s": 61.544,
+        "std_s": 0.0,
+        "min_s": 61.544,
+        "max_s": 61.544,
+        "all_times_s": [
+            61.544
+        ]
+    },
+    "85": {
+        "resolution": 85,
+        "runtime_with_compilation_s": 206.014,
+        "mean_s": 143.011,
+        "std_s": 0.0,
+        "min_s": 143.011,
+        "max_s": 143.011,
+        "all_times_s": [
+            143.011
+        ]
+    },
+    "106": {
+        "resolution": 106,
+        "runtime_with_compilation_s": 284.451,
+        "mean_s": 210.509,
+        "std_s": 0.0,
+        "min_s": 210.509,
+        "max_s": 210.509,
+        "all_times_s": [
+            210.509
+        ]
+    },
+    "119": {
+        "resolution": 119,
+        "runtime_with_compilation_s": 355.986,
+        "mean_s": 270.519,
+        "std_s": 0.0,
+        "min_s": 270.519,
+        "max_s": 270.519,
+        "all_times_s": [
+            270.519
+        ]
+    },
+    "170": {
+        "resolution": 170,
+        "runtime_with_compilation_s": 786.663,
+        "mean_s": 675.366,
+        "std_s": 0.0,
+        "min_s": 675.366,
+        "max_s": 675.366,
+        "all_times_s": [
+            675.366
+        ]
+    }
+}

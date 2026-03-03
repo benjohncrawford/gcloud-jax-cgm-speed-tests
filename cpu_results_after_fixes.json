@@ -1,0 +1,66 @@
+{
+    "platform": "cpu",
+    "device_kind": "cpu",
+    "num_devices": 1,
+    "python_version": "3.11.2",
+    "jax_version": "0.9.1",
+    "hostname": "jcm-bench-cpu-c4",
+    "total_time_days": 365.0,
+    "save_interval_days": 365.0,
+    "n_repeats": 1,
+    "21": {
+        "resolution": 21,
+        "runtime_with_compilation_s": 114.067,
+        "mean_s": 107.1,
+        "std_s": 0.0,
+        "min_s": 107.1,
+        "max_s": 107.1,
+        "all_times_s": [
+            107.1
+        ]
+    },
+    "31": {
+        "resolution": 31,
+        "runtime_with_compilation_s": 217.616,
+        "mean_s": 210.946,
+        "std_s": 0.0,
+        "min_s": 210.946,
+        "max_s": 210.946,
+        "all_times_s": [
+            210.946
+        ]
+    },
+    "42": {
+        "resolution": 42,
+        "runtime_with_compilation_s": 347.91,
+        "mean_s": 340.856,
+        "std_s": 0.0,
+        "min_s": 340.856,
+        "max_s": 340.856,
+        "all_times_s": [
+            340.856
+        ]
+    },
+    "85": {
+        "resolution": 85,
+        "runtime_with_compilation_s": 886.961,
+        "mean_s": 876.962,
+        "std_s": 0.0,
+        "min_s": 876.962,
+        "max_s": 876.962,
+        "all_times_s": [
+            876.962
+        ]
+    },
+    "106": {
+        "resolution": 106,
+        "runtime_with_compilation_s": 1309.185,
+        "mean_s": 1300.231,
+        "std_s": 0.0,
+        "min_s": 1300.231,
+        "max_s": 1300.231,
+        "all_times_s": [
+            1300.231
+        ]
+    }
+}

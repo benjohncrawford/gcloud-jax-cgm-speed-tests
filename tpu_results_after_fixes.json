@@ -1,0 +1,88 @@
+{
+    "platform": "tpu",
+    "device_kind": "TPU v5 lite",
+    "num_devices": 1,
+    "python_version": "3.11.14",
+    "jax_version": "0.9.1",
+    "hostname": "t1v-n-76460a62-w-0",
+    "total_time_days": 365.0,
+    "save_interval_days": 365.0,
+    "n_repeats": 1,
+    "21": {
+        "resolution": 21,
+        "runtime_with_compilation_s": 27.671,
+        "mean_s": 16.057,
+        "std_s": 0.0,
+        "min_s": 16.057,
+        "max_s": 16.057,
+        "all_times_s": [
+            16.057
+        ]
+    },
+    "31": {
+        "resolution": 31,
+        "runtime_with_compilation_s": 40.804,
+        "mean_s": 28.428,
+        "std_s": 0.0,
+        "min_s": 28.428,
+        "max_s": 28.428,
+        "all_times_s": [
+            28.428
+        ]
+    },
+    "42": {
+        "resolution": 42,
+        "runtime_with_compilation_s": 61.545,
+        "mean_s": 48.053,
+        "std_s": 0.0,
+        "min_s": 48.053,
+        "max_s": 48.053,
+        "all_times_s": [
+            48.053
+        ]
+    },
+    "85": {
+        "resolution": 85,
+        "runtime_with_compilation_s": 227.098,
+        "mean_s": 205.263,
+        "std_s": 0.0,
+        "min_s": 205.263,
+        "max_s": 205.263,
+        "all_times_s": [
+            205.263
+        ]
+    },
+    "106": {
+        "resolution": 106,
+        "runtime_with_compilation_s": 365.058,
+        "mean_s": 336.382,
+        "std_s": 0.0,
+        "min_s": 336.382,
+        "max_s": 336.382,
+        "all_times_s": [
+            336.382
+        ]
+    },
+    "119": {
+        "resolution": 119,
+        "runtime_with_compilation_s": 454.377,
+        "mean_s": 421.555,
+        "std_s": 0.0,
+        "min_s": 421.555,
+        "max_s": 421.555,
+        "all_times_s": [
+            421.555
+        ]
+    },
+    "170": {
+        "resolution": 170,
+        "runtime_with_compilation_s": 932.848,
+        "mean_s": 889.904,
+        "std_s": 0.0,
+        "min_s": 889.904,
+        "max_s": 889.904,
+        "all_times_s": [
+            889.904
+        ]
+    }
+}
