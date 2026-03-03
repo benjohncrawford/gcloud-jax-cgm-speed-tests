@@ -1,0 +1,923 @@
+"lscpu" (cpu):
+Architecture:                x86_64
+  CPU op-mode(s):            32-bit, 64-bit
+  Address sizes:             52 bits physical, 57 bits virtual
+  Byte Order:                Little Endian
+CPU(s):                      32
+  On-line CPU(s) list:       0-31
+Vendor ID:                   GenuineIntel
+  BIOS Vendor ID:            Google
+  Model name:                INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.30GHz
+    BIOS Model name:           CPU @ 2.0GHz
+    BIOS CPU family:         1
+    CPU family:              6
+    Model:                   207
+    Thread(s) per core:      2
+    Core(s) per socket:      16
+    Socket(s):               1
+    Stepping:                2
+    BogoMIPS:                4600.00
+    Flags:                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mm
+                             x fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtop
+                             ology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq monitor ssse3 fma cx16 pcid s
+                             se4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 
+                             3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjus
+                             t bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512
+                             ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsa
+                             ves avx_vnni avx512_bf16 wbnoinvd arat avx512vbmi umip avx512_vbmi2 gfni vaes vpcl
+                             mulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid cldemote movdiri movd
+                             ir64b fsrm md_clear serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 arch
+                             _capabilities
+Virtualization features:     
+  Hypervisor vendor:         KVM
+  Virtualization type:       full
+Caches (sum of all):         
+  L1d:                       768 KiB (16 instances)
+  L1i:                       512 KiB (16 instances)
+  L2:                        32 MiB (16 instances)
+  L3:                        260 MiB (1 instance)
+NUMA:                        
+  NUMA node(s):              1
+  NUMA node0 CPU(s):         0-31
+Vulnerabilities:             
+  Gather data sampling:      Not affected
+  Indirect target selection: Not affected
+  Itlb multihit:             Not affected
+  L1tf:                      Not affected
+  Mds:                       Not affected
+  Meltdown:                  Not affected
+  Mmio stale data:           Not affected
+  Reg file data sampling:    Not affected
+  Retbleed:                  Not affected
+  Spec rstack overflow:      Not affected
+  Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+  Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+  Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; 
+                             BHI BHI_DIS_S
+  Srbds:                     Not affected
+  Tsa:                       Not affected
+  Tsx async abort:           Not affected
+  Vmscape:                   Not affected
+
+"free -m" (memory):
+               total        used        free      shared  buff/cache   available
+Mem:          120753        3686      117464           0         601      117066
+Swap:              0           0           0
+
+"sudo lspci -v" (gpu and tpu):
+00:00.0 Host bridge: Intel Corporation 440FX - 82441FX PMC [Natoma] (rev 02)
+        Subsystem: Red Hat, Inc. Qemu virtual machine
+        Flags: bus master, medium devsel, latency 0
+
+00:01.0 ISA bridge: Intel Corporation 82371AB/EB/MB PIIX4 ISA (rev 03)
+        Physical Slot: 1
+        Flags: bus master, fast devsel, latency 0
+
+00:01.3 Bridge: Intel Corporation 82371AB/EB/MB PIIX4 ACPI (rev 03)
+        Physical Slot: 1
+        Flags: bus master, fast devsel, latency 0, IRQ 9
+
+00:03.0 Ethernet controller: Google, Inc. Compute Engine Virtual Ethernet [gVNIC]
+        Subsystem: Google, Inc. Compute Engine Virtual Ethernet [gVNIC]
+        Physical Slot: 3
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8402000 (32-bit, non-prefetchable) [size=4K]
+        Memory at d8400000 (32-bit, non-prefetchable) [size=1K]
+        Memory at d8300000 (32-bit, non-prefetchable) [size=1M]
+        Capabilities: [80] MSI-X: Enable+ Count=33 Masked-
+        Kernel driver in use: gvnic
+        Kernel modules: gve
+
+00:04.0 Unclassified device [00ff]: Red Hat, Inc. Virtio RNG
+        Subsystem: Red Hat, Inc. Virtio RNG
+        Physical Slot: 4
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        I/O ports at c000 [size=32]
+        Memory at d8401000 (32-bit, non-prefetchable) [size=64]
+        Capabilities: [80] MSI-X: Enable+ Count=2 Masked-
+        Kernel driver in use: virtio-pci
+        Kernel modules: virtio_pci
+
+00:05.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010b
+        Physical Slot: 5
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Bus: primary=00, secondary=01, subordinate=22, sec-latency=0
+        I/O behind bridge: [disabled] [16-bit]
+        Memory behind bridge: d4200000-d82fffff [size=65M] [32-bit]
+        Prefetchable memory behind bridge: 2000000000-5fffffffff [size=256G] [32-bit]
+        Capabilities: [80] Express Root Port (Slot-), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010b
+        Kernel driver in use: pcieport
+
+00:06.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010b
+        Physical Slot: 6
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Bus: primary=00, secondary=23, subordinate=44, sec-latency=0
+        I/O behind bridge: [disabled] [16-bit]
+        Memory behind bridge: d0000000-d40fffff [size=65M] [32-bit]
+        Prefetchable memory behind bridge: 6000000000-9fffffffff [size=256G] [32-bit]
+        Capabilities: [80] Express Root Port (Slot-), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010b
+        Kernel driver in use: pcieport
+
+01:00.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010c
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Bus: primary=01, secondary=02, subordinate=22, sec-latency=0
+        I/O behind bridge: [disabled] [16-bit]
+        Memory behind bridge: d4200000-d82fffff [size=65M] [32-bit]
+        Prefetchable memory behind bridge: 2000000000-5fffffffff [size=256G] [32-bit]
+        Capabilities: [80] Express Upstream Port, MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010c
+        Kernel driver in use: pcieport
+
+02:00.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d821f000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=03, subordinate=03, sec-latency=0
+        Memory behind bridge: d8000000-d81fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 5e00000000-5fffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:01.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d821e000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=04, subordinate=04, sec-latency=0
+        Memory behind bridge: d7e00000-d7ffffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 5c00000000-5dffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:02.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d821d000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=05, subordinate=05, sec-latency=0
+        Memory behind bridge: d7c00000-d7dfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 5a00000000-5bffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:03.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d821c000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=06, subordinate=06, sec-latency=0
+        Memory behind bridge: d7a00000-d7bfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 5800000000-59ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:04.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d821b000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=07, subordinate=07, sec-latency=0
+        Memory behind bridge: d7800000-d79fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 5600000000-57ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:05.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d821a000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=08, subordinate=08, sec-latency=0
+        Memory behind bridge: d7600000-d77fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 5400000000-55ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:06.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8219000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=09, subordinate=09, sec-latency=0
+        Memory behind bridge: d7400000-d75fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 5200000000-53ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:07.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8218000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=0a, subordinate=0a, sec-latency=0
+        Memory behind bridge: d7200000-d73fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 5000000000-51ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:08.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8217000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=0b, subordinate=0b, sec-latency=0
+        Memory behind bridge: d7000000-d71fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 4e00000000-4fffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:09.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8216000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=0c, subordinate=0c, sec-latency=0
+        Memory behind bridge: d6e00000-d6ffffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 4c00000000-4dffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:0a.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8215000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=0d, subordinate=0d, sec-latency=0
+        Memory behind bridge: d6c00000-d6dfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 4a00000000-4bffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:0b.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8214000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=0e, subordinate=0e, sec-latency=0
+        Memory behind bridge: d6a00000-d6bfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 4800000000-49ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:0c.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8213000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=0f, subordinate=0f, sec-latency=0
+        Memory behind bridge: d6800000-d69fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 4600000000-47ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:0d.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8212000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=10, subordinate=10, sec-latency=0
+        Memory behind bridge: d6600000-d67fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 4400000000-45ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:0e.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8211000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=11, subordinate=11, sec-latency=0
+        Memory behind bridge: d6400000-d65fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 4200000000-43ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:0f.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8210000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=12, subordinate=12, sec-latency=0
+        Memory behind bridge: d6200000-d63fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 4000000000-41ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:10.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d820f000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=13, subordinate=13, sec-latency=0
+        Memory behind bridge: d6000000-d61fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 3e00000000-3fffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:11.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d820e000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=14, subordinate=14, sec-latency=0
+        Memory behind bridge: d5e00000-d5ffffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 3c00000000-3dffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:12.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d820d000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=15, subordinate=15, sec-latency=0
+        Memory behind bridge: d5c00000-d5dfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 3a00000000-3bffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:13.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d820c000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=16, subordinate=16, sec-latency=0
+        Memory behind bridge: d5a00000-d5bfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 3800000000-39ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:14.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d820b000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=17, subordinate=17, sec-latency=0
+        Memory behind bridge: d5800000-d59fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 3600000000-37ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:15.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d820a000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=18, subordinate=18, sec-latency=0
+        Memory behind bridge: d5600000-d57fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 3400000000-35ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:16.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8209000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=19, subordinate=19, sec-latency=0
+        Memory behind bridge: d5400000-d55fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 3200000000-33ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:17.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8208000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=1a, subordinate=1a, sec-latency=0
+        Memory behind bridge: d5200000-d53fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 3000000000-31ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:18.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8207000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=1b, subordinate=1b, sec-latency=0
+        Memory behind bridge: d5000000-d51fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 2e00000000-2fffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:19.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8206000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=1c, subordinate=1c, sec-latency=0
+        Memory behind bridge: d4e00000-d4ffffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 2c00000000-2dffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:1a.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8205000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=1d, subordinate=1d, sec-latency=0
+        Memory behind bridge: d4c00000-d4dfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 2a00000000-2bffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:1b.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8204000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=1e, subordinate=1e, sec-latency=0
+        Memory behind bridge: d4a00000-d4bfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 2800000000-29ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:1c.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8203000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=1f, subordinate=1f, sec-latency=0
+        Memory behind bridge: d4800000-d49fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 2600000000-27ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:1d.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8202000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=20, subordinate=20, sec-latency=0
+        Memory behind bridge: d4600000-d47fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 2400000000-25ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:1e.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d8201000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=21, subordinate=21, sec-latency=0
+        Memory behind bridge: d4400000-d45fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 2200000000-23ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+02:1f.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8200000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=02, secondary=22, subordinate=22, sec-latency=0
+        Memory behind bridge: d4200000-d43fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 2000000000-21ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+03:00.0 Non-Volatile memory controller: Google, Inc. NVMe device (rev 01) (prog-if 02 [NVM Express])
+        Subsystem: Google, Inc. NVMe device
+        Physical Slot: 0
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d8000000 (64-bit, non-prefetchable) [size=64K]
+        Memory at 5e00000000 (64-bit, prefetchable) [size=64K]
+        Capabilities: [80] MSI-X: Enable+ Count=3 Masked-
+        Capabilities: [8c] Express Endpoint, MSI 00
+        Kernel driver in use: nvme
+
+23:00.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010c
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Bus: primary=23, secondary=24, subordinate=44, sec-latency=0
+        I/O behind bridge: [disabled] [16-bit]
+        Memory behind bridge: d0000000-d40fffff [size=65M] [32-bit]
+        Prefetchable memory behind bridge: 6000000000-9fffffffff [size=256G] [32-bit]
+        Capabilities: [80] Express Upstream Port, MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010c
+        Kernel driver in use: pcieport
+
+24:00.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d401f000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=25, subordinate=25, sec-latency=0
+        Memory behind bridge: d3e00000-d3ffffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 9e00000000-9fffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:01.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d401e000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=26, subordinate=26, sec-latency=0
+        Memory behind bridge: d3c00000-d3dfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 9c00000000-9dffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:02.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d401d000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=27, subordinate=27, sec-latency=0
+        Memory behind bridge: d3a00000-d3bfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 9a00000000-9bffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:03.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d401c000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=28, subordinate=28, sec-latency=0
+        Memory behind bridge: d3800000-d39fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 9800000000-99ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:04.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d401b000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=29, subordinate=29, sec-latency=0
+        Memory behind bridge: d3600000-d37fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 9600000000-97ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:05.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d401a000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=2a, subordinate=2a, sec-latency=0
+        Memory behind bridge: d3400000-d35fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 9400000000-95ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:06.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4019000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=2b, subordinate=2b, sec-latency=0
+        Memory behind bridge: d3200000-d33fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 9200000000-93ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:07.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4018000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=2c, subordinate=2c, sec-latency=0
+        Memory behind bridge: d3000000-d31fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 9000000000-91ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:08.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d4017000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=2d, subordinate=2d, sec-latency=0
+        Memory behind bridge: d2e00000-d2ffffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 8e00000000-8fffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:09.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d4016000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=2e, subordinate=2e, sec-latency=0
+        Memory behind bridge: d2c00000-d2dfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 8c00000000-8dffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:0a.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4015000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=2f, subordinate=2f, sec-latency=0
+        Memory behind bridge: d2a00000-d2bfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 8a00000000-8bffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:0b.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4014000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=30, subordinate=30, sec-latency=0
+        Memory behind bridge: d2800000-d29fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 8800000000-89ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:0c.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d4013000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=31, subordinate=31, sec-latency=0
+        Memory behind bridge: d2600000-d27fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 8600000000-87ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:0d.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d4012000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=32, subordinate=32, sec-latency=0
+        Memory behind bridge: d2400000-d25fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 8400000000-85ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:0e.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4011000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=33, subordinate=33, sec-latency=0
+        Memory behind bridge: d2200000-d23fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 8200000000-83ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:0f.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4010000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=34, subordinate=34, sec-latency=0
+        Memory behind bridge: d2000000-d21fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 8000000000-81ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:10.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d400f000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=35, subordinate=35, sec-latency=0
+        Memory behind bridge: d1e00000-d1ffffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 7e00000000-7fffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:11.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d400e000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=36, subordinate=36, sec-latency=0
+        Memory behind bridge: d1c00000-d1dfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 7c00000000-7dffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:12.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d400d000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=37, subordinate=37, sec-latency=0
+        Memory behind bridge: d1a00000-d1bfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 7a00000000-7bffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:13.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d400c000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=38, subordinate=38, sec-latency=0
+        Memory behind bridge: d1800000-d19fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 7800000000-79ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:14.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d400b000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=39, subordinate=39, sec-latency=0
+        Memory behind bridge: d1600000-d17fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 7600000000-77ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:15.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d400a000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=3a, subordinate=3a, sec-latency=0
+        Memory behind bridge: d1400000-d15fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 7400000000-75ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:16.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4009000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=3b, subordinate=3b, sec-latency=0
+        Memory behind bridge: d1200000-d13fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 7200000000-73ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:17.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4008000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=3c, subordinate=3c, sec-latency=0
+        Memory behind bridge: d1000000-d11fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 7000000000-71ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:18.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d4007000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=3d, subordinate=3d, sec-latency=0
+        Memory behind bridge: d0e00000-d0ffffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 6e00000000-6fffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:19.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d4006000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=3e, subordinate=3e, sec-latency=0
+        Memory behind bridge: d0c00000-d0dfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 6c00000000-6dffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:1a.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4005000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=3f, subordinate=3f, sec-latency=0
+        Memory behind bridge: d0a00000-d0bfffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 6a00000000-6bffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:1b.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4004000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=40, subordinate=40, sec-latency=0
+        Memory behind bridge: d0800000-d09fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 6800000000-69ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:1c.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d4003000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=41, subordinate=41, sec-latency=0
+        Memory behind bridge: d0600000-d07fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 6600000000-67ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:1d.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 11
+        Memory at d4002000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=42, subordinate=42, sec-latency=0
+        Memory behind bridge: d0400000-d05fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 6400000000-65ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:1e.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4001000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=43, subordinate=43, sec-latency=0
+        Memory behind bridge: d0200000-d03fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 6200000000-63ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
+
+24:1f.0 PCI bridge: Google, Inc. Device 0f48 (prog-if 00 [Normal decode])
+        Subsystem: Google, Inc. Device 010d
+        Flags: bus master, fast devsel, latency 0, IRQ 10
+        Memory at d4000000 (32-bit, non-prefetchable) [size=32]
+        Bus: primary=24, secondary=44, subordinate=44, sec-latency=0
+        Memory behind bridge: d0000000-d01fffff [size=2M] [32-bit]
+        Prefetchable memory behind bridge: 6000000000-61ffffffff [size=8G] [32-bit]
+        Capabilities: [80] Express Downstream Port (Slot+), MSI 00
+        Capabilities: [bc] Subsystem: Google, Inc. Device 010d
+        Capabilities: [c4] MSI-X: Enable+ Count=1 Masked-
+        Kernel driver in use: pcieport
