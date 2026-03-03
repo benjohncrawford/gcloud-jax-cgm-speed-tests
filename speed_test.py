@@ -156,6 +156,9 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         print("RESULTS")
         print("=" * 60)
         print(json.dumps(global_results, indent=2))
+        with open("results.json", "w+") as f:
+            f.write(json.dumps(global_results, indent=2))
+        
     return global_results
 
 
