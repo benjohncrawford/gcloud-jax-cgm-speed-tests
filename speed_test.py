@@ -20,7 +20,6 @@ import numpy as np
 from jcm.model import Model
 from jcm.utils import VALID_TRUNCATIONS
 from jcm.forcing import default_forcing
-from jcm.terrain import TerrainData
 from jcm.physics.speedy.speedy_coords import get_speedy_coords
 
 NODAL_SHAPE_FOR_TRUNCATION = {
@@ -67,8 +66,7 @@ def run_compile_time_test(total_time=360.0, n_repeats=10):
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
         coords = get_speedy_coords(spectral_truncation=resolution)
-        terrain = TerrainData.aquaplanet(coords=coords)
-        model = Model(coords=coords, terrain=terrain)
+        model = Model(coords=coords)
         print("Model created.")
 
         print(f"Running model for {total_time} days...")
@@ -114,8 +112,7 @@ def run_speed_test(total_time=360.0, save_interval=30.0, n_repeats=5):
         # --- Model setup ---
         print(f"Creating model (T{resolution})...")
         coords = get_speedy_coords(nodal_shape=NODAL_SHAPE_FOR_TRUNCATION[resolution])
-        terrain = TerrainData.aquaplanet(coords=coords)
-        model = Model(coords=coords, terrain=terrain)
+        model = Model(coords=coords)
         print("Model created.")
 
         # --- Warmup / compile ---
