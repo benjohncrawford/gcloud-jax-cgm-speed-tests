@@ -84,5 +84,27 @@
         "all_times_s": [
             675.366
         ]
+    },
+    "213": {
+        "resolution": 213,
+        "runtime_with_compilation_s": 1327.38,
+        "mean_s": 1155.374,
+        "std_s": 0.0,
+        "min_s": 1155.374,
+        "max_s": 1155.374,
+        "all_times_s": [
+            1155.374
+        ]
+    },
+    "340": {
+        "resolution": 340,
+        "runtime_with_compilation_s": 4286.369,
+        "mean_s": 4165.173,
+        "std_s": 0.0,
+        "min_s": 4165.173,
+        "max_s": 4165.173,
+        "all_times_s": [
+            4165.173
+        ]
     }
 }
