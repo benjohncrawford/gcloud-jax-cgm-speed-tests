@@ -106,5 +106,16 @@
         "all_times_s": [
             4165.173
         ]
+    },
+    "425": {
+        "resolution": 425,
+        "runtime_with_compilation_s": 8845.492,
+        "mean_s": 8678.449,
+        "std_s": 0.0,
+        "min_s": 8678.449,
+        "max_s": 8678.449,
+        "all_times_s": [
+            8678.449
+        ]
     }
 }
