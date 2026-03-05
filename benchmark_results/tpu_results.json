@@ -3,108 +3,119 @@
     "device_kind": "TPU v5 lite",
     "num_devices": 1,
     "python_version": "3.11.14",
-    "jax_version": "0.9.0.1",
-    "hostname": "t1v-n-fe818bb6-w-0",
+    "jax_version": "0.9.1",
+    "hostname": "t1v-n-76460a62-w-0",
     "total_time_days": 365.0,
     "save_interval_days": 365.0,
     "n_repeats": 1,
     "21": {
         "resolution": 21,
-        "runtime_with_compilation_s": 48.588,
-        "mean_s": 36.585,
+        "runtime_with_compilation_s": 35.459,
+        "mean_s": 23.388,
         "std_s": 0.0,
-        "min_s": 36.585,
-        "max_s": 36.585,
+        "min_s": 23.388,
+        "max_s": 23.388,
         "all_times_s": [
-            36.585
+            23.388
+        ]
+    },
+    "31": {
+        "resolution": 31,
+        "runtime_with_compilation_s": 48.397,
+        "mean_s": 36.548,
+        "std_s": 0.0,
+        "min_s": 36.548,
+        "max_s": 36.548,
+        "all_times_s": [
+            36.548
         ]
     },
     "42": {
         "resolution": 42,
-        "runtime_with_compilation_s": 48.565,
-        "mean_s": 36.474,
+        "runtime_with_compilation_s": 70.534,
+        "mean_s": 57.783,
         "std_s": 0.0,
-        "min_s": 36.474,
-        "max_s": 36.474,
+        "min_s": 57.783,
+        "max_s": 57.783,
         "all_times_s": [
-            36.474
-        ]
-    },
-    "62": {
-        "resolution": 62,
-        "runtime_with_compilation_s": 49.178,
-        "mean_s": 36.624,
-        "std_s": 0.0,
-        "min_s": 36.624,
-        "max_s": 36.624,
-        "all_times_s": [
-            36.624
-        ]
-    },
-    "63": {
-        "resolution": 63,
-        "runtime_with_compilation_s": 48.767,
-        "mean_s": 36.771,
-        "std_s": 0.0,
-        "min_s": 36.771,
-        "max_s": 36.771,
-        "all_times_s": [
-            36.771
+            57.783
         ]
     },
     "85": {
         "resolution": 85,
-        "runtime_with_compilation_s": 48.877,
-        "mean_s": 36.73,
+        "runtime_with_compilation_s": 251.086,
+        "mean_s": 231.337,
         "std_s": 0.0,
-        "min_s": 36.73,
-        "max_s": 36.73,
+        "min_s": 231.337,
+        "max_s": 231.337,
         "all_times_s": [
-            36.73
+            231.337
         ]
     },
     "106": {
         "resolution": 106,
-        "runtime_with_compilation_s": 48.561,
-        "mean_s": 36.625,
+        "runtime_with_compilation_s": 400.271,
+        "mean_s": 374.42,
         "std_s": 0.0,
-        "min_s": 36.625,
-        "max_s": 36.625,
+        "min_s": 374.42,
+        "max_s": 374.42,
         "all_times_s": [
-            36.625
+            374.42
         ]
     },
-    "159": {
-        "resolution": 159,
-        "runtime_with_compilation_s": 48.782,
-        "mean_s": 36.78,
+    "119": {
+        "resolution": 119,
+        "runtime_with_compilation_s": 514.367,
+        "mean_s": 484.148,
         "std_s": 0.0,
-        "min_s": 36.78,
-        "max_s": 36.78,
+        "min_s": 484.148,
+        "max_s": 484.148,
         "all_times_s": [
-            36.78
+            484.148
         ]
     },
-    "255": {
-        "resolution": 255,
-        "runtime_with_compilation_s": 48.684,
-        "mean_s": 36.695,
+    "170": {
+        "resolution": 170,
+        "runtime_with_compilation_s": 1015.571,
+        "mean_s": 972.65,
         "std_s": 0.0,
-        "min_s": 36.695,
-        "max_s": 36.695,
+        "min_s": 972.65,
+        "max_s": 972.65,
         "all_times_s": [
-            36.695
+            972.65
         ]
     },
-    "382": {
-        "resolution": 382,
-        "runtime_with_compilation_s": 48.465,
-        "mean_s": 36.877,
+    "213": {
+        "resolution": 213,
+        "runtime_with_compilation_s": 1705.287,
+        "mean_s": 1663.199,
         "std_s": 0.0,
-        "min_s": 36.877,
-        "max_s": 36.877,
+        "min_s": 1663.199,
+        "max_s": 1663.199,
         "all_times_s": [
-            36.877
+            1663.199
+        ]
+    },
+    "340": {
+        "resolution": 340,
+        "runtime_with_compilation_s": 4851.742,
+        "mean_s": 4785.656,
+        "std_s": 0.0,
+        "min_s": 4785.656,
+        "max_s": 4785.656,
+        "all_times_s": [
+            4785.656
+        ]
+    },
+    "425": {
+        "resolution": 425,
+        "runtime_with_compilation_s": 8050.878,
+        "mean_s": 7964.092,
+        "std_s": 0.0,
+        "min_s": 7964.092,
+        "max_s": 7964.092,
+        "all_times_s": [
+            7964.092
         ]
     }
 }
